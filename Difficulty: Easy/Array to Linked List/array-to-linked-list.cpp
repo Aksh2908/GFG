@@ -48,23 +48,23 @@ public:
 };*/
 
 class Solution {
-    private:
-    Node* createLL(Node* tail,int key){
-        Node* temp=new Node(key);
-        if(!temp){
-            return temp;
-        }
-        if(tail) tail->next=temp;
-        return temp;
+  private:
+    Node* insertLL(Node *tail, int x){
+        Node* temp=new Node(x);
+        if(!tail) return temp;
+        tail->next=temp;
+        tail=temp;
+        return tail;
     }
   public:
     Node* constructLL(vector<int>& arr) {
-        Node* head=NULL;
-        Node* tail=NULL;
-        int i,n=arr.size();
-        for(i=0;i<n;i++){
-            if(!head)head=tail=createLL(tail,arr[i]);
-            else tail=createLL(tail,arr[i]);
+        Node* head=nullptr;
+        Node* tail=nullptr;
+        for(auto it:arr){
+            if(!head) head=tail=insertLL(tail,it);
+            else{
+                tail=insertLL(tail,it);
+            }
         }
         return head;
     }
