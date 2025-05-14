@@ -8,18 +8,15 @@ using namespace std;
 class Solution {
   public:
     // Function to return the adjacency list for each vertex.
-    void insert(vector<vector<int>> &p, int src, int dst){
-        p[src].push_back(dst);
-    }
     vector<vector<int>> printGraph(int V, vector<pair<int, int>>& edges) {
-        vector<vector<int>> p(V);
-        int i;
+        vector<vector<int>> ans(V,vector<int>());
         for(auto it:edges){
-            int src=it.first,dst=it.second;
-            insert(p,src,dst);
-            insert(p,dst,src);
+            auto first=it.first;
+            auto sec=it.second;
+            ans[first].push_back(sec);
+            ans[sec].push_back(first);
         }
-        return p;
+        return ans;
     }
 };
 
