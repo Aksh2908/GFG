@@ -1,4 +1,4 @@
-<h2><a href="https://www.geeksforgeeks.org/problems/number-of-distinct-islands/1">Number of Distinct Islands</a></h2><h3>Difficulty Level : Difficulty: Medium</h3><hr><div class="problems_problem_content__Xm_eO"><p><span style="font-size: 18px;">Given a boolean 2D matrix <strong>grid&nbsp;</strong>of size <strong>n</strong> * <strong>m</strong>. You have to find the number of distinct islands where a group of connected 1s (horizontally or vertically) forms an island. Two islands are considered to be distinct if and only if one island is not equal to another (not rotated or reflected).</span></p>
+<h2><a href="https://www.geeksforgeeks.org/problems/number-of-distinct-islands/0">Number of Distinct Islands</a></h2><h3>Difficulty Level : Difficulty: Medium</h3><hr><div class="problems_problem_content__Xm_eO"><p><span style="font-size: 18px;">Given a boolean 2D matrix <strong>grid&nbsp;</strong>of size <strong>n</strong> * <strong>m</strong>. You have to find the number of distinct islands where a group of connected 1s (horizontally or vertically) forms an island. Two islands are considered to be distinct if and only if one island is not equal to another (not rotated or reflected).</span></p>
 <p><strong><span style="font-size: 18px;">Example 1:</span></strong></p>
 <pre><span style="font-size: 18px;"><strong>Input:</strong></span>
 <span style="font-size: 18px;">grid[][] = [[1, 1, 0, 0, 0],
@@ -11,9 +11,7 @@
 &nbsp;           [<span style="color: #ff0000;">1</span>, <span style="color: #ff0000;">1</span>, 0, 0, 0], 
 &nbsp;           [0, 0, 0, <span style="color: #ff0000;">1</span>, <span style="color: #ff0000;">1</span>], 
 &nbsp;           [0, 0, 0, <span style="color: #ff0000;">1</span>, <span style="color: #ff0000;">1</span>]]
-Same colored islands are equal.
-We have 2 equal islands, so we 
-have only 1 distinct island.</span>
+Same colored islands are equal. We have 2 equal islands, so we have only 1 distinct island.</span>
 
 </pre>
 <p><strong><span style="font-size: 18px;">Example 2:</span></strong></p>
