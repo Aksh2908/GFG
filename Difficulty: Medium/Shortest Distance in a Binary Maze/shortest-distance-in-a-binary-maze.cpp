@@ -4,43 +4,36 @@ class Solution {
   public:
     int shortestPath(vector<vector<int>> &grid, pair<int, int> source,
                      pair<int, int> destination) {
+        // code here
         int n=grid.size();
         int m=grid[0].size();
         
-        if(source==destination) return 0;
+        vector<vector<int>> visited(n,vector<int>(m,0));
+        typedef pair<int,pair<int,int>> pp;
         
-        vector<vector<int>> dist(n,vector<int>(m,INT_MAX));
+        priority_queue<pp,vector<pp>,greater<pp>> pq;
+        pq.push({0,{source.first,source.second}});
+        visited[source.first][source.second]=1;
         
-        queue<pair<int,pair<int,int>>> q;
+        vector<int> row={0,-1,0,1};
+        vector<int> col={-1,0,1,0};
         
-        q.push({0,{source.first,source.second}});
-        
-        vector<int> row={0,1,0,-1};
-        vector<int> col={1,0,-1,0};
-        
-        while(!q.empty()){
-            int d=q.front().first;
-            int r=q.front().second.first;
-            int c=q.front().second.second;
-            
-            q.pop();
+        while(!pq.empty()){
+            int dist=pq.top().first;
+            int r=pq.top().second.first;
+            int c=pq.top().second.second;
+            if(r==destination.first && c==destination.second) return dist;
+            pq.pop();
             
             for(int i=0;i<4;i++){
-                int ni=r+row[i];
-                int nj=c+col[i];
-                if(ni>=0 && ni<n && nj>=0 && nj<m && grid[ni][nj]){
-                    if(d+1<dist[ni][nj]){
-                        dist[ni][nj]=d+1;
-                        if(ni==destination.first && nj==destination.second){
-                            return dist[ni][nj];
-                        }
-                        q.push({d+1,{ni,nj}});
-                    }
+                int ni=row[i]+r;
+                int nj=col[i]+c;
+                if(ni>=0 && ni<n && nj>=0 && nj<m && grid[ni][nj]==1 && !visited[ni][nj]){
+                    pq.push({dist+1,{ni,nj}});
+                    visited[ni][nj]=1;
                 }
             }
         }
-        
-        if(dist[destination.first][destination.second]==INT_MAX) return -1;
-        return dist[destination.first][destination.second];
+        return -1;
     }
 };
