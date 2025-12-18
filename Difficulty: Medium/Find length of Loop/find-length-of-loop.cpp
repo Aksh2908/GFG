@@ -16,10 +16,8 @@ class Solution {
     int lengthOfLoop(Node *head) {
         // code here
         if(!head) return 0;
-        Node* slow=head;
-        Node* fast=head;
-        
-        int flag=0;
+        int cnt=0,flag=0;
+        Node* slow=head,*fast=head->next;
         
         while(fast && fast->next){
             slow=slow->next;
@@ -29,17 +27,15 @@ class Solution {
                 break;
             }
         }
-        int cnt=0;
-        if(!flag) return cnt;
-        else{
-            slow=slow->next;
-            
-            while(slow!=fast){
-                cnt++;
-                slow=slow->next;
-            }
-        }
         
-        return cnt+1;
+        if(flag){
+            fast=fast->next;
+            while(fast!=slow){
+                cnt++;
+                fast=fast->next;
+            }
+            return cnt+1;
+        }
+        return 0;
     }
 };
