@@ -1,21 +1,24 @@
 class Solution {
-  private:
-    void solve(Node* root, int x, int &ceil){
-        if(!root) return;
-        
-        if(root->data>=x) ceil=root->data;
-        if(root->data>x) solve(root->left,x,ceil);
-        if(root->data<x) solve(root->right,x,ceil);
-    }
   public:
     int findCeil(Node* root, int x) {
         // code here
         if(!root) return -1;
-        
         int ceil=-1;
         
-        solve(root,x,ceil);
+        Node* curr=root;
         
+        while(curr){
+            if(curr->data==x){
+                return x;
+            }
+            if(curr->data>x){
+                ceil=curr->data;
+                curr=curr->left;
+            }
+            else{
+                curr=curr->right;
+            }
+        }
         return ceil;
     }
 };
