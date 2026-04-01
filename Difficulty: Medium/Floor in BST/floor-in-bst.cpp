@@ -1,6 +1,6 @@
 /*
 class Node {
-public:
+  public:
     int data;
     Node* left;
     Node* right;
@@ -11,10 +11,9 @@ public:
     }
 };
 */
-
 class Solution {
   public:
-    int floor(Node* root, int x) {
+    int findFloor(Node* root, int x) {
         // code here
         if(!root) return -1;
         
@@ -34,7 +33,6 @@ class Solution {
                 curr=curr->right;
             }
         }
-        
         return floor;
     }
 };
