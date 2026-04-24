@@ -16,34 +16,26 @@ struct Node
 
 class Solution {
   private:
-    bool isLeaf(Node* root){
-        return (!root->left && !root->right);
-    }
-    
     void solve(Node* root, vector<vector<int>>& ans, vector<int>& temp){
         if(!root) return;
-        
         temp.push_back(root->data);
         
-        if(isLeaf(root)){
+        if(!root->left && !root->right){
             ans.push_back(temp);
         }
-        
-        
-        if(root->left) solve(root->left,ans,temp);
-        if(root->right) solve(root->right,ans,temp);
+        else{
+            solve(root->left,ans,temp);
+            solve(root->right,ans,temp);
+        }
         temp.pop_back();
     }
-    
   public:
     vector<vector<int>> Paths(Node* root) {
         // code here
-        vector<vector<int>> ans;
-        if(!root) return ans;
+        if(!root) return {};
         vector<int> temp;
-        
+        vector<vector<int>> ans;
         solve(root,ans,temp);
-        
         return ans;
     }
 };
