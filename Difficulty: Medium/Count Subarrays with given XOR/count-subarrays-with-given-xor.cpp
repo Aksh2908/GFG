@@ -3,19 +3,26 @@ class Solution {
     long subarrayXor(vector<int> &arr, int k) {
         // code here
         int n=arr.size();
+        
         int cnt=0;
-        int Xor=0;
-        unordered_map<int,int>mpp;
+        
+        unordered_map<long,int> mpp;
+        
+        long long XOR=0;
         mpp[0]=1;
+        
         for(int i=0;i<n;i++){
-            Xor^=arr[i];
+            XOR^=arr[i];
             
-            int diff=Xor^k;
-            if(mpp.find(diff)!=mpp.end()){
-                cnt+=mpp[diff];
+            long long rem=XOR^k;
+            
+            if(mpp.find(rem)!=mpp.end()){
+                cnt+=mpp[rem];
             }
-            mpp[Xor]++;
+            
+            mpp[XOR]++;
         }
+        
         return cnt;
     }
 };
