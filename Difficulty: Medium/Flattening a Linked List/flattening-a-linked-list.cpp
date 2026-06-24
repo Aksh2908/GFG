@@ -7,17 +7,19 @@ public:
 
     Node(int x) {
         data = x;
-        next = NULL;
-        bottom = NULL;
+        next = nullptr;
+        bottom = nullptr;
     }
-};
-*/
+}; */
 
 class Solution {
   private:
-    Node* merge(Node* l1, Node* l2){
-        Node* dummy= new Node(-1);
+    Node* merge(Node* left, Node* right){
+        Node* dummy=new Node(-1);
         Node* temp=dummy;
+        
+        Node* l1=left;
+        Node* l2=right;
         
         while(l1 && l2){
             if(l1->data<=l2->data){
@@ -28,8 +30,10 @@ class Solution {
                 temp->bottom=l2;
                 l2=l2->bottom;
             }
+            
             temp=temp->bottom;
         }
+        
         if(l1){
             temp->bottom=l1;
         }
@@ -43,7 +47,7 @@ class Solution {
     Node *flatten(Node *root) {
         // code here
         if(!root || !root->next) return root;
-        Node* flattenHead=flatten(root->next);
-        return merge(flattenHead,root);
+        Node* merged=flatten(root->next);
+        return merge(merged,root);
     }
 };
