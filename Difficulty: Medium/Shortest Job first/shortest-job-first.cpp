@@ -6,14 +6,14 @@ class Solution {
         
         sort(bt.begin(),bt.end());
         
+        int wt=0;
         int st=0;
-        int twt=0;
         
         for(int i=0;i<n;i++){
-            twt+=(st);
             st+=(bt[i]);
+            wt+=(st-bt[i]);
         }
         
-        return twt/n;
+        return (wt/n);
     }
 };
